@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Dan's Weather App</title>
+  <style>
+  body{
+    margin:0;
+    padding:0;
+    background-color: #101e2b;
+    color: white;
+    font-family: verdana;
+    font-size: 25px;
+  }
+  nav{
+    background-color: red;
+  }
+
+  center{
+    padding-top:100px;
+  }
+
+
+
+  </style>
+</head>
+
+<body>
+  <nav></nav>
+<center>
+
+  <img src = "http://openweathermap.org/img/w/<%=weather.icon%>.png" <%=weather.icon%> <br>
+  <h1>Weather in <%= weather.city%> </h1> <br>
+  <%= weather.temperature %>°C | <%= weather.description %> <br>
+
+  <center>
+</body>
+</html>
