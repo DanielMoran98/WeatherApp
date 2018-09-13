@@ -2,23 +2,60 @@
 <html>
 <head>
   <title> Dan's Weather App</title>
+  <link rel="shortcut icon" type="image/ico" href="favicon.png"/>
   <style>
-  body{
-    margin:0;
-    padding:0;
-    background-color: #101e2b;
-    color: white;
-    font-family: verdana;
-    font-size: 25px;
-  }
-  nav{
-    background-color: red;
-  }
 
-  center{
-    padding-top:100px;
-  }
+    body{
+      margin:0;
+      padding:0;
+      background-color: #101e2b;
+      color: white;
+      font-family: verdana;
+      font-size: 30px;
+    }
+    nav{
+      background-color: red;
+    }
 
+    #content{
+      padding-top:15%;
+    }
+    img{
+      padding: 0;
+      margin: 0;
+      width:25px;
+      height:25px;
+    }
+
+    form{
+      width:70%;
+      margin:0;
+      padding:0;
+      margin-top:20px;
+
+    }
+    form *{
+      height:45px;
+      margin:0;
+      box-sizing:border-box;
+      border:0;
+    }
+    form input{
+      border-top-left-radius: 25px;
+      border-bottom-left-radius: 25px;
+      padding-left:10px;
+      width:60%;
+
+
+    }
+    form button{
+      border-top-right-radius: 25px;
+      border-bottom-right-radius: 25px;
+      width:10%;
+      margin-left: -10px;
+      background-color: #0066ff;
+      color:white;
+    }
 
 
   </style>
@@ -26,12 +63,19 @@
 
 <body>
   <nav></nav>
-<center>
-
-  <img src = "http://openweathermap.org/img/w/<%=weather.icon%>.png" <%=weather.icon%> <br>
-  <h1>Weather in <%= weather.city%> </h1> <br>
-  <%= weather.temperature %>°C | <%= weather.description %> <br>
-
   <center>
-</body>
+    <form method="POST", action="/city">
+      <input type="text" placeholder="Enter your city here..." name="searchedCity" required autofocus>
+       <button>Submit</button>
+    </form>
+
+  <div id="content">
+    <!-- <img src = "http://openweathermap.org/img/w/<%=weather.icon%>.png" <%=weather.icon%> <br> -->
+    <h1>Weather in <%= weather.city%> </h1> <br>
+    <img src = "http://openweathermap.org/img/w/<%=weather.icon%>.png" <%=weather.icon%> <br><br>
+    <%= weather.temperature %>°C | <%= weather.description %> <br>
+
+    <center>
+  </div>
+
 </html>
