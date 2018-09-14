@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Dan's Weather App</title>
+  <link rel="shortcut icon" type="image/ico" href="favicon.png"/>
+  <style>
+
+    body{
+      margin:0;
+      padding:0;
+      background-color: #101e2b;
+      color: white;
+      font-family: verdana;
+      font-size: 30px;
+    }
+    nav{
+      background-color: red;
+    }
+
+    #content{
+      padding-top:10%;
+    }
+    img{
+      padding: 0;
+      margin: 0;
+      width:25px;
+      height:25px;
+    }
+
+    form{
+      width:70%;
+      margin:0;
+      padding:0;
+      margin-top:20px;
+
+    }
+    form *{
+      height:45px;
+      margin:0;
+      box-sizing:border-box;
+      border:0;
+      font-size: 20px;
+    }
+    form input{
+      border-top-left-radius: 25px;
+      border-bottom-left-radius: 25px;
+      padding-left:15px;
+      width:60%;
+
+    }
+    form button{
+      border-top-right-radius: 25px;
+      border-bottom-right-radius: 25px;
+      width:auto;
+      margin-left: -10px;
+      background-color: #0066ff;
+      color:white;
+      padding-left: 25px;
+      padding-right:25px;
+    }
+
+    #weeklyWeather {
+      width:auto;
+      max-width: 100%;
+      padding-top:10%;
+    }
+
+    #weeklyWeather ul {
+      list-style-type: none;
+      padding-left: 4%;
+      padding-right: 4%;
+      border-left: 1px white solid;
+      float:left;
+      display:block;
+
+    }
+    #weeklyWeather ul:first-child{
+      border:none;
+    }
+    #weeklyWeather li * {
+      list-style-type: none;
+      text-align:center;
+    }
+
+    #weeklyWeather li:first-child{
+
+    }
+
+
+  </style>
+</head>
+
+<body>
+  <nav></nav>
+  <center>
+    <form method="POST", action="/city">
+      <input type="text" placeholder="Enter your city here..." name="searchedCity" required autofocus>
+       <button>Submit</button>
+    </form>
+
+  <div id="content">
+
+    <h1>Welcome to Daniel's weather app! </h1> <br>
+    <p>To start, type a city into the searchbar.</p> <br><br>
+
+  </div>
+</center>
+</body>
+</html>
