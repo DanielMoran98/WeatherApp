@@ -6,7 +6,7 @@ var urlencodedParser = bodyParser.urlencoded({extended: false});
 app.set('view engine', 'ejs');
 
 var city = "Dublin";
-var url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=5363435ae49939dfc973f6b59522299a`;
+var url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=5363435ae49939dfc973f6b59522299a&cnt=7`;
 
 app.use(express.static("public"));
 
@@ -38,11 +38,10 @@ app.post('/city', urlencodedParser, function(req, res)
 
   console.log(req.body.searchedCity);
   city = req.body.searchedCity;
-  var url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=5363435ae49939dfc973f6b59522299a`;
+  var url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=5363435ae49939dfc973f6b59522299a&cnt=7`;
   request(url, function(error, response, body) {
+
     weatherJson = JSON.parse(body);
-
-
 
     var weather = {
       city: city,
