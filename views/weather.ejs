@@ -18,7 +18,7 @@
     }
 
     #content{
-      padding-top:15%;
+      padding-top:10%;
     }
     img{
       padding: 0;
@@ -59,6 +59,33 @@
       padding-right:25px;
     }
 
+    #weeklyWeather {
+      width:auto;
+      max-width: 100%;
+      padding-top:10%;
+    }
+
+    #weeklyWeather ul {
+      list-style-type: none;
+      padding-left: 4%;
+      padding-right: 4%;
+      border-left: 1px white solid;
+      float:left;
+      display:block;
+
+    }
+    #weeklyWeather ul:first-child{
+      border:none;
+    }
+    #weeklyWeather li * {
+      list-style-type: none;
+      text-align:center;
+    }
+
+    #weeklyWeather li:first-child{
+
+    }
+
 
   </style>
 </head>
@@ -79,6 +106,44 @@
 
 
   </div>
-  <center>
+  <div id="weeklyWeather">
+    <ul>
+      <li>Mon</li>
+      <li>12°C</li>
+      <li>Rain</li>
+    </ul>
+    <ul>
+      <li>Tue</li>
+      <li>13°C</li>
+      <li>Clear</li>
+    </ul>
+    <ul>
+      <li>Wed</li>
+      <li>13°C</li>
+      <li>Cloudy</li>
+
+    </ul>
+    <ul>
+      <li>Thu</li>
+      <li>11°C</li>
+      <li>Clear</li>
+    </ul>
+    <ul>
+      <li>Fri</li>
+      <li>12°C</li>
+      <li>Rain</li>
+    </ul>
+    <ul>
+      <li>Sat</li>
+      <li>14°C</li>
+      <li>Cloudy</li>
+    </ul>
+    <ul>
+      <li>Sun</li>
+      <li>15°C</li>
+      <li>Cloudy</li>
+    </ul>
+  </div>
+</center>
 </body>
 </html>
