@@ -15,8 +15,6 @@ app.get('/', function(req, res)
   request(url, function(error, response, body) {
     weatherJson = JSON.parse(body);
 
-
-
     var weather = {
       city: city,
       temperature: Math.round(weatherJson.list[0].main.temp - 273.15),
@@ -35,22 +33,21 @@ app.get('/', function(req, res)
 
 app.post('/city', urlencodedParser, function(req, res)
 {
-
   console.log(req.body.searchedCity);
   city = req.body.searchedCity;
   var url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=5363435ae49939dfc973f6b59522299a&cnt=7`;
-  request(url, function(error, response, body) {
 
+  request(url, function(error, response, body) {
     weatherJson = JSON.parse(body);
 
     var weather = {
-      city: city,
-      temperature: Math.round(weatherJson.list[0].main.temp - 273.15),
+      city: city, //Sets the city taken from the search bar
+      temperature: Math.round(weatherJson.list[0].main.temp - 273.15), //Sets the values taken from the API query
       description: weatherJson.list[0].weather[0].main,
       icon: weatherJson.list[0].weather[0].icon
     };
 
-    var weatherData = {weather: weather};
+    var weatherData = {weather: weather}; //Prepares data for ejs file.
     console.log(weatherData);
     res.render('weather', weatherData);
 
@@ -59,6 +56,6 @@ app.post('/city', urlencodedParser, function(req, res)
 
 
 
-})
+});
 
 app.listen(8000);
