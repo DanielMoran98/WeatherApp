@@ -39,7 +39,18 @@ app.post('/city', urlencodedParser, function(req, res)
 
   request(url, function(error, response, body) {
     weatherJson = JSON.parse(body);
+    var weatherArray = [];
 
+    for(var i = 0; i < 7; i++)
+    {
+    var loopObject = {
+      city: city, //Sets the city taken from the search bar
+      temperature: Math.round(weatherJson.list[i].main.temp - 273.15), //Sets the values taken from the API query
+      description: weatherJson.list[i].weather[0].main,
+      icon: weatherJson.list[i].weather[0].icon
+      }
+    weatherArray.push(loopObject);
+  } //console.log(weatherArray);
     var weather = {
       city: city, //Sets the city taken from the search bar
       temperature: Math.round(weatherJson.list[0].main.temp - 273.15), //Sets the values taken from the API query
@@ -47,7 +58,7 @@ app.post('/city', urlencodedParser, function(req, res)
       icon: weatherJson.list[0].weather[0].icon
     };
 
-    var weatherData = {weather: weather}; //Prepares data for ejs file.
+    var weatherData = {weather: weather, weatherArray: weatherArray}; //Prepares data for ejs file.
     console.log(weatherData);
     res.render('weather', weatherData);
 
