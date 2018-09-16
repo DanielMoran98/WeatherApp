@@ -40,6 +40,7 @@
       border-bottom-left-radius: 25px;
       padding-left:15px;
       width:60%;
+      outline: none;
 
     }
     form button{

@@ -6,14 +6,13 @@ var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({extended: false});
 var favicon = require('serve-favicon');
 var path = require('path');
-
+var dates = require('./util/dates.js');
 
 var city = "Dublin";
 var url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=${config.token}&cnt=7`;
 app.use(express.static(path.join(__dirname, "public")));
-
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-console.log(path.join(__dirname, 'public', 'favicon.ico'));
+
 
 app.set('view engine', 'ejs');
 app.get('/', function(req, res)
@@ -65,7 +64,19 @@ app.post('/city', urlencodedParser, function(req, res)
       icon: weatherJson.list[0].weather[0].icon
     };
 
-    var weatherData = {weather: weather, weatherArray: weatherArray}; //Prepares data for ejs file.
+    var days = [
+      dates.dayOfWeek(1),
+      dates.dayOfWeek(2),
+      dates.dayOfWeek(3),
+      dates.dayOfWeek(4),
+      dates.dayOfWeek(5),
+      dates.dayOfWeek(6),
+      dates.dayOfWeek(7)
+    ]
+
+
+
+    var weatherData = {weather: weather, weatherArray: weatherArray, days: days}; //Prepares data for ejs file.
     //console.log(weatherData);
     res.render('weather', weatherData);
 
