@@ -1,20 +1,27 @@
-var config = require('./config.json');
+//Required modules
 var express = require('express');
-var app = express();
 var request = require('request');
 var bodyParser = require('body-parser');
-var urlencodedParser = bodyParser.urlencoded({extended: false});
 var favicon = require('serve-favicon');
 var path = require('path');
+
+//Required files
+var config = require('./config.json');
 var dates = require('./util/dates.js');
+
+var app = express();
+var urlencodedParser = bodyParser.urlencoded({extended: false});
+app.use(express.static(path.join(__dirname, "public")));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.set('view engine', 'ejs');
 
 var city = "Dublin";
 var url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=${config.token}&cnt=7`;
-app.use(express.static(path.join(__dirname, "public")));
-app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 
-app.set('view engine', 'ejs');
+// Routes
+
+
 app.get('/', function(req, res)
 {
   request(url, function(error, response, body) {
@@ -55,7 +62,7 @@ app.post('/city', urlencodedParser, function(req, res)
       icon: weatherJson.list[i].weather[0].icon
       }
     weatherArray.push(loopObject);
-  } //console.log(weatherArray);
+  }
 
     var weather = { //Gets accurate current weather
       city: city,
@@ -74,8 +81,6 @@ app.post('/city', urlencodedParser, function(req, res)
       dates.dayOfWeek(7)
     ]
 
-
-
     var weatherData = {weather: weather, weatherArray: weatherArray, days: days}; //Prepares data for ejs file.
     //console.log(weatherData);
     res.render('weather', weatherData);
@@ -87,4 +92,6 @@ app.post('/city', urlencodedParser, function(req, res)
 
 });
 
-app.listen(8000);
+app.listen(8000, function(){
+  console.log("Server running.");
+});
