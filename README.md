@@ -19,5 +19,7 @@ Openweathermaps API
 EJS
 
 
+## Future updates
 
+As I am still working on this project, the trello board I have made which shows what I'll be working on next is available [here](https://trello.com/b/3QlTwaEk/weather-app).
 
