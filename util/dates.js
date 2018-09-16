@@ -3,7 +3,6 @@ function dayOfWeek(daysAway) //Takes in a number and returns the name of the day
 {
    var date = new Date();
    dayNumber = (date.getDay() + daysAway) % 7 ;
-   console.log(dayNumber)
 
    if(dayNumber == 0)
    {
