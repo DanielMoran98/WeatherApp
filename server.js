@@ -10,12 +10,12 @@ var path = require('path');
 
 var city = "Dublin";
 var url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=${config.token}&cnt=7`;
-app.use(express.static('public'));
-app.set('view engine', 'ejs');
+app.use(express.static(path.join(__dirname, "public")));
 
-app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 console.log(path.join(__dirname, 'public', 'favicon.ico'));
 
+app.set('view engine', 'ejs');
 app.get('/', function(req, res)
 {
   request(url, function(error, response, body) {
