@@ -4,12 +4,17 @@ var app = express();
 var request = require('request');
 var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({extended: false});
-app.set('view engine', 'ejs');
+var favicon = require('serve-favicon');
+var path = require('path');
+
 
 var city = "Dublin";
 var url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=${config.token}&cnt=7`;
+app.use(express.static('public'));
+app.set('view engine', 'ejs');
 
-app.use(express.static("public"));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
+console.log(path.join(__dirname, 'public', 'favicon.ico'));
 
 app.get('/', function(req, res)
 {
@@ -24,7 +29,7 @@ app.get('/', function(req, res)
     };
 
     var weatherData = {weather: weather};
-    console.log(weatherData);
+    //console.log(weatherData);
     res.render('index', weatherData);
 
   });
@@ -61,7 +66,7 @@ app.post('/city', urlencodedParser, function(req, res)
     };
 
     var weatherData = {weather: weather, weatherArray: weatherArray}; //Prepares data for ejs file.
-    console.log(weatherData);
+    //console.log(weatherData);
     res.render('weather', weatherData);
 
   });
