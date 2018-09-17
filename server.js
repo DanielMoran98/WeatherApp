@@ -9,6 +9,7 @@ var path = require('path');
 var config = require('./config.json');
 var dates = require('./util/dates.js');
 
+//App setup
 var app = express();
 var urlencodedParser = bodyParser.urlencoded({extended: false});
 app.use(express.static(path.join(__dirname, "public")));
@@ -19,9 +20,8 @@ var city = "Dublin";
 var url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=${config.token}&cnt=7`;
 
 
+
 // Routes
-
-
 app.get('/', function(req, res)
 {
   request(url, function(error, response, body) {
