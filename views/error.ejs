@@ -1,5 +1,17 @@
 <html>
+<head>
+    <title> Dan's Weather App</title>
+    <link rel="stylesheet" type="text/css" href="styles/styles.css">
+</head>
   <body>
-    ERROR!
+    <center>
+    <h1 style="padding-top:15%;">Error!</h1>
+    <h2>
+      <% if(resp == 404){ resp %>
+      <%= "It looks like the city \'" + city + "\' doesn't exist!" %>
+      <% } %>
+    </h2>
+    <h3>Click <a href="/">here</a> to go back and try again!
+    </center>
   </body>
 </html>

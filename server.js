@@ -50,42 +50,56 @@ app.post('/city', urlencodedParser, function(req, res)
   var url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=${config.token}&cnt=7`;
 
   request(url, function(error, response, body) {
-    weatherJson = JSON.parse(body);
-    var weatherArray = [];
-
-    for(var i = 0; i < 7; i++)
+    if(response.statusCode == 200)
     {
-    var loopObject = {
-      city: city, //Sets the city taken from the search bar
-      temperature: Math.round(weatherJson.list[i].main.temp - 273.15), //Sets the values taken from the API query
-      description: weatherJson.list[i].weather[0].main,
-      icon: weatherJson.list[i].weather[0].icon
+
+
+      weatherJson = JSON.parse(body);
+      console.log('error:', error); // Print the error if one occurred
+      console.log('statusCode:', response && response.statusCode);
+
+
+
+
+      var weatherArray = [];
+
+      for(var i = 0; i < 7; i++)
+      {
+        var loopObject = {
+        city: city, //Sets the city taken from the search bar
+        temperature: Math.round(weatherJson.list[i].main.temp - 273.15), //Sets the values taken from the API query
+        description: weatherJson.list[i].weather[0].main,
+        icon: weatherJson.list[i].weather[0].icon
+        }
+        weatherArray.push(loopObject);
       }
-    weatherArray.push(loopObject);
+
+      var weather = { //Gets accurate current weather
+        city: city,
+        temperature: Math.round(weatherJson.list[0].main.temp - 273.15),
+        description: weatherJson.list[0].weather[0].main,
+        icon: weatherJson.list[0].weather[0].icon
+      };
+
+      var days = [
+        dates.dayOfWeek(1),
+        dates.dayOfWeek(2),
+        dates.dayOfWeek(3),
+        dates.dayOfWeek(4),
+        dates.dayOfWeek(5),
+        dates.dayOfWeek(6),
+        dates.dayOfWeek(7)
+      ]
+
+      var weatherData = {weather: weather, weatherArray: weatherArray, days: days}; //Prepares data for ejs file.
+      //console.log(weatherData);
+      res.render('weather.ejs', weatherData);
+
+  }else{
+    res.render('error.ejs', {resp: response.statusCode, city: city})
   }
 
-    var weather = { //Gets accurate current weather
-      city: city,
-      temperature: Math.round(weatherJson.list[0].main.temp - 273.15),
-      description: weatherJson.list[0].weather[0].main,
-      icon: weatherJson.list[0].weather[0].icon
-    };
-
-    var days = [
-      dates.dayOfWeek(1),
-      dates.dayOfWeek(2),
-      dates.dayOfWeek(3),
-      dates.dayOfWeek(4),
-      dates.dayOfWeek(5),
-      dates.dayOfWeek(6),
-      dates.dayOfWeek(7)
-    ]
-
-    var weatherData = {weather: weather, weatherArray: weatherArray, days: days}; //Prepares data for ejs file.
-    //console.log(weatherData);
-    res.render('weather', weatherData);
-
-  });
+});
 
 
 
