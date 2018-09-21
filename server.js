@@ -52,14 +52,9 @@ app.post('/city', urlencodedParser, function(req, res)
   request(url, function(error, response, body) {
     if(response.statusCode == 200)
     {
-
-
       weatherJson = JSON.parse(body);
       console.log('error:', error); // Print the error if one occurred
       console.log('statusCode:', response && response.statusCode);
-
-
-
 
       var weatherArray = [];
 
@@ -92,7 +87,6 @@ app.post('/city', urlencodedParser, function(req, res)
       ]
 
       var weatherData = {weather: weather, weatherArray: weatherArray, days: days}; //Prepares data for ejs file.
-      //console.log(weatherData);
       res.render('weather.ejs', weatherData);
 
   }else{
