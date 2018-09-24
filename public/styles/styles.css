@@ -2,9 +2,9 @@
     body{
       margin:0;
       padding:0;
-      background-color: #101e2b;
+      background: linear-gradient(to right, #C6426E, #642B73);
       color: white;
-      font-family: verdana;
+      font-family: 'Open Sans', verdana;
       font-size: 30px;
     }
 
@@ -60,7 +60,7 @@
     #weeklyWeather {
       width:100%;
       max-width: 100%;
-      padding-top:10%;
+      padding-top:9%;
       font-size: 1.1em;
       text-align: center;
     }
