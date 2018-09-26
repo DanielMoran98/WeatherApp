@@ -58,22 +58,24 @@
     }
 
     #weeklyWeather {
-      width:100%;
-      max-width: 100%;
+      width:auto;
       padding-top:9%;
       font-size: 1.1em;
       text-align: center;
+      overflow:hidden;
+
     }
 
     #weeklyWeather ul {
       list-style-type: none;
-      padding-left: 4%;
-      padding-right: 4%;
+      padding-left:4%;
+      padding-right:4%;
       border-left: 1px white solid;
       float:left;
-      display:block;
+      display:inline-block;
       text-align: center;
-      width: 100 / 7;
+
+
 
     }
     #weeklyWeather ul:first-child{
@@ -86,9 +88,18 @@
 
     #weeklyWeather li {
       text-align:center;
+      width:100%;
 
     }
 
     #weeklyWeather li:first-child{
 
+    }
+    .welcomeMessage{
+      font-size: 3em;
+    }
+
+    img{
+      height:60px;
+      width:60px;
     }
