@@ -22,50 +22,20 @@
 
 
   </div>
-  <div id="weeklyWeather">
-    <ul>
-      <li><%=days[0]%></li>
-      <li><%= weatherArray[0].temperature %>°C</li>
-      <li><%= weatherArray[0].description %></li>
-      <li><img src = "http://openweathermap.org/img/w/<%=weatherArray[0].icon%>.png" <%=weather.icon%></li>
-    </ul>
-    <ul>
-      <li><%=days[1]%></li>
-      <li><%= weatherArray[1].temperature %>°C</li>
-      <li><%= weatherArray[1].description %></li>
-      <li><img src = "http://openweathermap.org/img/w/<%=weatherArray[1].icon%>.png" <%=weather.icon%></li>
-    </ul>
-    <ul>
-      <li><%=days[2]%></li>
-      <li><%= weatherArray[2].temperature %>°C</li>
-      <li><%= weatherArray[2].description %></li>
-      <li><img src = "http://openweathermap.org/img/w/<%=weatherArray[2].icon%>.png" <%=weather.icon%></li>
 
-    </ul>
-    <ul>
-      <li><%=days[3]%></li>
-      <li><%= weatherArray[3].temperature %>°C</li>
-      <li><%= weatherArray[3].description %></li>
-      <li><img src = "http://openweathermap.org/img/w/<%=weatherArray[3].icon%>.png" <%=weather.icon%></li>
-    </ul>
-    <ul>
-      <li><%=days[4]%></li>
-      <li><%= weatherArray[4].temperature %>°C</li>
-      <li><%= weatherArray[4].description %></li>
-      <li><img src = "http://openweathermap.org/img/w/<%=weatherArray[4].icon%>.png" <%=weather.icon%></li>
-    </ul>
-    <ul>
-      <li><%=days[5]%></li>
-      <li><%= weatherArray[5].temperature %>°C</li>
-      <li><%= weatherArray[5].description %></li>
-      <li><img src = "http://openweathermap.org/img/w/<%=weatherArray[5].icon%>.png" <%=weather.icon%></li>
-    </ul>
-    <ul>
-      <li><%=days[6]%></li>
-      <li><%= weatherArray[6].temperature %>°C</li>
-      <li><%= weatherArray[6].description %></li>
-      <li><img src = "http://openweathermap.org/img/w/<%=weatherArray[6].icon%>.png" <%=weather.icon%></li>
-    </ul>
+  <div id="weeklyWeather">
+
+
+        <% for(var i = 0; i < 7; i++){ %>
+          <ul>
+            <li><%=days[i]%></li>
+            <li><%= weatherArray[i].temperature %>°C</li>
+            <li><%= weatherArray[i].description %></li>
+            <li><img src = "http://openweathermap.org/img/w/<%=weatherArray[i].icon%>.png" <%= weather.icon %></li>
+          </ul>
+        <% } %>
+
+
   </div>
 </center>
 </body>
