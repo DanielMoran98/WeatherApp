@@ -33,6 +33,6 @@ Add a config.json file in the top level directory containing:
 }
 ```
 
-Then use ```npm start``` to install dependencies.
+Then use ```npm install``` to install dependencies.
 
 Finally use ```node server``` to run.
