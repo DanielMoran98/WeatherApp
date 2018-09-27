@@ -26,7 +26,7 @@ As I am still working on this project, the trello board I have made which shows 
 
 ## To run
 
-Add a config.js file in the top level directory containing:
+Add a config.json file in the top level directory containing:
 ```javascript
 {
   "token": "YOUR-OPENWEATHERMAPS-API-KEY-GOES-HERE";
