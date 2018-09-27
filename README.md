@@ -22,3 +22,17 @@ EJS
 ## Future updates
 
 As I am still working on this project, the trello board I have made which shows what I'll be working on next is available [here](https://trello.com/b/3QlTwaEk/weather-app).
+
+
+## To run
+
+Add a config.js file in the top level directory containing:
+```javascript
+{
+  "token": "YOUR-OPENWEATHERMAPS-API-KEY-GOES-HERE";
+}
+```
+
+Then use ```npm start``` to install dependencies.
+
+Finally use ```node server``` to run.
